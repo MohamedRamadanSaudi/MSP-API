@@ -33,7 +33,7 @@ require("dotenv").config();
 /* Database Connection */
 mongoose
   .connect(process.env.MONGODB_URL)
-  .then(() => console.log("Connected to MongoDB.."))
+  .then(() => console.log("Database Connected Successfully..."))
   .catch((err) => console.error("MongoDB Connection Failed..", err));
 
 var app = express();
