@@ -29,7 +29,7 @@ async function seedAdminController(req, res) {
   try {
     const admin = new Admin({
       email: "admin",
-      password: bcrypt.hashSync("admin", 10),
+      password: bcrypt.hashSync(process.env.ADMIN_PASSWORD, 10),
     });
     await admin.save();
     return res.status(201).json(admin);
