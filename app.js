@@ -56,7 +56,7 @@ app.use(express.static(path.join(__dirname, "uploads")));
 app.use(rateLimiter);
 
 /* Dashboard Routes */
-app.use("/", indexRouter);
+app.use("/health", indexRouter);
 app.use("/config", configRouter);
 app.use("/admin", adminRouter);
 app.use("/dashboard/teams", AdminPrivileges, teamRouter);
