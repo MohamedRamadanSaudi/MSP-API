@@ -71,7 +71,6 @@ async function editTeamHistory(req, res) {
     await teamHistory.updateOne(updatedTeamHistory);
     return res.status(200).json(updatedTeamHistory);
   } catch (error) {
-    console.log(error)
     return res.status(500).json("INTERNAL SERVER ERROR");
   }
 }
@@ -90,7 +89,7 @@ async function deleteTeamHistory(req, res) {
         throw err;
       }
     });
-    await TeamHistory.findByIdAndDelete(req.params.id);
+    await TeamHistory.findByIdAndDelete(teamHistory._id);
     return res.status(200).json("Team History Deleted Successfully.")
   } catch (error) {
     return res.status(500).json("INTERNAL SERVER ERROR");
