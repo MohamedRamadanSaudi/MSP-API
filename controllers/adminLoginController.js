@@ -27,6 +27,9 @@ async function adminLoginController(req, res) {
 
 async function seedAdminController(req, res) {
   try {
+    if (await Admin.findOne({ email: "admin" })) {
+      return res.status(400).json("Admin Already Exists...");
+    }
     const admin = new Admin({
       email: "admin",
       password: bcrypt.hashSync(process.env.ADMIN_PASSWORD, 10),
