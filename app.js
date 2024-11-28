@@ -6,6 +6,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 const mongoose = require("mongoose");
 const cors = require('cors');
+const helmet = require('helmet');
 
 /* Dashboard Routes */
 var indexRouter = require("./routes/index");
@@ -26,6 +27,7 @@ var galleryClientRouter = require("./routes/galleryClient");
 
 /* Route Protection */
 const AdminPrivileges = require("./middlewares/isAdmin");
+const rateLimiter = require("./middlewares/rateLimiter");
 
 /* Environment Variables Configuration */
 require("dotenv").config();
@@ -38,6 +40,8 @@ mongoose
 
 var app = express();
 app.use(cors());
+app.set("trust proxy", 1);
+app.use(helmet());
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -49,6 +53,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static(path.join(__dirname, "uploads")));
+app.use(rateLimiter);
 
 /* Dashboard Routes */
 app.use("/", indexRouter);
