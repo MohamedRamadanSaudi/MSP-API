@@ -33,10 +33,15 @@ const rateLimiter = require("./middlewares/rateLimiter");
 require("dotenv").config();
 
 /* Database Connection */
-mongoose
-  .connect(process.env.MONGODB_URL)
-  .then(() => console.log("Database Connected Successfully..."))
-  .catch((err) => console.error("MongoDB Connection Failed..", err));
+const mongoURI = process.env.MONGODB_URL;
+if (!mongoURI) {
+  console.error('MongoDB URL is undefined. Check your .env file.');
+  process.exit(1);
+}
+
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('MongoDB connected successfully'))
+  .catch((err) => console.error('MongoDB Connection Failed:', err));
 
 var app = express();
 app.use(cors());
