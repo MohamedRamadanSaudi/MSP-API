@@ -27,6 +27,9 @@ var galleryClientRouter = require("./routes/galleryClient");
 /* Route Protection */
 const AdminPrivileges = require("./middlewares/isAdmin");
 const rateLimiter = require("./middlewares/rateLimiter");
+const errorHandler = require('./middlewares/errorHandler');
+
+const AppError = require('./utils/appError');
 
 /* Environment Variables Configuration */
 require("dotenv").config();
@@ -75,6 +78,9 @@ app.use("/galleryClient", galleryClientRouter);
 app.all('*', (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
+
+// Global error handling middleware
+app.use(errorHandler);
 
 var PORT = process.env.PORT || '3000';
 
