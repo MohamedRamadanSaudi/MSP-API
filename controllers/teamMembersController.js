@@ -13,7 +13,7 @@ async function addTeamMember(req, res) {
       facebook: req.body.facebook,
       behanceOrGithub: req.body.behanceOrGithub,
       linktree: req.body.linktree,
-      image: process.env.URL + req.file.filename,
+      image: `${process.env.URL}${req.file.filename}`,
       description: req.body.description,
     });
     await teamMember.save();
@@ -95,7 +95,7 @@ async function updateTeamMember(req, res) {
           return res.status(500).json("INTERNAL SERVER ERROR");
         }
       });
-      image = process.env.URL + req.file.filename;
+      image = `${process.env.URL}${req.file.filename}`;
     }
     let updatedMember = {
       name: req.body.name !== undefined ? req.body.name : teamMember.name,

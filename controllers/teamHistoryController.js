@@ -6,7 +6,7 @@ async function addTeamHistory(req, res) {
   try {
     const teamHistory = new TeamHistory({
       name: req.body.name,
-      image: process.env.URL + req.file.filename,
+      image: `${process.env.URL}${req.file.filename}`,
       description: req.body.description,
     });
     await teamHistory.save();
@@ -58,7 +58,7 @@ async function editTeamHistory(req, res) {
           throw err;
         }
       });
-      image = process.env.URL + req.file.filename;
+      image = `${process.env.URL}${req.file.filename}`;
     }
     const updatedTeamHistory = {
       name: req.body.name !== undefined ? req.body.name : teamHistory.name,

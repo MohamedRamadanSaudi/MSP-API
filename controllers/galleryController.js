@@ -7,7 +7,7 @@ async function addGalleryItem(req, res) {
   try {
     const galleryItem = new Gallery({
       name: req.body.name,
-      image: process.env.URL + req.file.filename,
+      image: `${process.env.URL}${req.file.filename}`,
     });
     await galleryItem.save();
     return res.status(201).json("Image Added To Gallery.");
@@ -79,7 +79,7 @@ async function updateGalleryItem(req, res) {
           throw err;
         }
       });
-      image = process.env.URL + req.file.filename;
+      image = `${process.env.URL}${req.file.filename}`;
     }
     const updatedItem = {
       name: req.body.name !== undefined ? req.body.name : galleryItem.name,
