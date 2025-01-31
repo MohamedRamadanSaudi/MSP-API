@@ -1122,6 +1122,193 @@
 					]
 				},
 				{
+					"name": "Reviews",
+					"item": [
+						{
+							"name": "Create",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "MSP {{JWT}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "reviewerName",
+											"value": "Mohamed Ramadan",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"description": "Optional",
+											"type": "file",
+											"src": "/C:/Users/pc/Downloads/WhatsApp Image 2025-01-27 at 5.33.49 PM.jpeg",
+											"disabled": true
+										},
+										{
+											"key": "title",
+											"value": "Backend Developer",
+											"type": "text"
+										},
+										{
+											"key": "review",
+											"value": "test review",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/reviews",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"reviews"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update",
+							"request": {
+								"method": "PATCH",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "MSP {{JWT}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "reviewerName",
+											"value": "Mohamed Ramadan",
+											"type": "text"
+										},
+										{
+											"key": "photo",
+											"description": "Optional",
+											"type": "file",
+											"src": "/C:/Users/pc/Downloads/WhatsApp Image 2025-01-27 at 5.33.49 PM.jpeg",
+											"disabled": true
+										},
+										{
+											"key": "title",
+											"value": "Backend Developer 2",
+											"type": "text"
+										},
+										{
+											"key": "review",
+											"value": "test review test",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "{{base_url}}/reviews/679d1ee8248bbdc284417c45",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"reviews",
+										"679d1ee8248bbdc284417c45"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "List",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "MSP {{JWT}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/reviews?page=1&limit=10",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"reviews"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Display",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "MSP {{JWT}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/reviews/679d1ce45ae1ce8536af0ffd",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"reviews",
+										"679d1ce45ae1ce8536af0ffd"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "MSP {{JWT}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/reviews/679d1ce45ae1ce8536af0ffd",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"reviews",
+										"679d1ce45ae1ce8536af0ffd"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
 					"name": "form",
 					"item": [
 						{
@@ -1531,6 +1718,68 @@
 									],
 									"path": [
 										"form"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Reviews",
+					"item": [
+						{
+							"name": "List",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "MSP {{JWT}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/reviews?page=1&limit=10",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"reviews"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "1"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Display",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "MSP {{JWT}}",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{base_url}}/reviews/679d1ce45ae1ce8536af0ffd",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"reviews",
+										"679d1ce45ae1ce8536af0ffd"
 									]
 								}
 							},

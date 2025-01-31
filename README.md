@@ -13,6 +13,7 @@ This is the backend API for the **MSP Tech Club**, a Microsoft Student Partner (
 - **Gallery Management**: Upload and manage gallery images for events and sessions.
 - **Team History**: Manage the history of the team with descriptions and images.
 - **Form Management**: Manage a single form with an `is_open` status (open/closed).
+- **Review Management**: Add, update, delete, and retrieve reviews with optional photos.
 - **Pagination**: Supports pagination for endpoints that return lists of data.
 - **Rate Limiting**: Protects the API from abuse with rate limiting.
 - **Error Handling**: Custom error handling for better debugging and user feedback.
@@ -106,6 +107,14 @@ This is the backend API for the **MSP Tech Club**, a Microsoft Student Partner (
 - **POST /form**: Create the form (if it doesn’t exist).
 - **GET /form**: Get the form status.
 - **PATCH /form**: Update the form status.
+
+### Review Routes
+
+- **POST /reviews**: Add a review (admin-only).
+- **GET /reviews**: Get all reviews (paginated).
+- **GET /reviews/:id**: Get a single review by ID.
+- **PATCH /reviews**: Update a review (admin-only).
+- **DELETE /dashboard/gallery/delete/:id**: Delete a review (admin-only).
 
 ---
 
