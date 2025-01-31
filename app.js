@@ -16,6 +16,7 @@ var galleryRouter = require("./routes/gallery");
 var blogRouter = require("./routes/blog");
 var sponsorRouter = require("./routes/sponsor");
 var teamHistoryRouter = require("./routes/teamHistory");
+var formRouter = require("./routes/form");
 
 /* Client Side Routes */
 var teamClientRouter = require("./routes/teamClient");
@@ -65,6 +66,7 @@ app.use("/dashboard/gallery", AdminPrivileges, galleryRouter);
 app.use("/dashboard/blogs", AdminPrivileges, blogRouter);
 app.use("/dashboard/sponsors", AdminPrivileges, sponsorRouter);
 app.use("/dashboard/teamHistory", AdminPrivileges, teamHistoryRouter);
+app.use("/form", formRouter);
 
 /* Client Side Routes */
 app.use("/teamMembersClient", teamClientRouter);
