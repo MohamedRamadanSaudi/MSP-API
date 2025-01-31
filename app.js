@@ -17,6 +17,7 @@ var blogRouter = require("./routes/blog");
 var sponsorRouter = require("./routes/sponsor");
 var teamHistoryRouter = require("./routes/teamHistory");
 var formRouter = require("./routes/form");
+var reviewRouter = require("./routes/review");
 
 /* Client Side Routes */
 var teamClientRouter = require("./routes/teamClient");
@@ -55,6 +56,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "uploads")));
+app.use("/public", express.static(path.join(__dirname, "public")));
 app.use(rateLimiter);
 
 /* Dashboard Routes */
@@ -67,6 +69,7 @@ app.use("/dashboard/blogs", AdminPrivileges, blogRouter);
 app.use("/dashboard/sponsors", AdminPrivileges, sponsorRouter);
 app.use("/dashboard/teamHistory", AdminPrivileges, teamHistoryRouter);
 app.use("/form", formRouter);
+app.use("/reviews", reviewRouter);
 
 /* Client Side Routes */
 app.use("/teamMembersClient", teamClientRouter);
