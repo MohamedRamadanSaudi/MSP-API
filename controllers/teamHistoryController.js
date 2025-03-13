@@ -8,6 +8,7 @@ async function addTeamHistory(req, res) {
       name: req.body.name,
       image: `${process.env.URL}${req.file.filename}`,
       description: req.body.description,
+      date: req.body.date,
     });
     await teamHistory.save();
     return res.status(201).json("Team History Added Successfully");
@@ -67,6 +68,7 @@ async function editTeamHistory(req, res) {
           ? req.body.description
           : teamHistory.description,
       image: image,
+      date: req.body.date !== undefined ? req.body.date : teamHistory.date,
     };
     await teamHistory.updateOne(updatedTeamHistory);
     return res.status(200).json(updatedTeamHistory);

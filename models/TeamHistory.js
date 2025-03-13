@@ -20,6 +20,9 @@ const teamHistorySchema = new mongoose.Schema(
       minLength: 3,
       maxLength: 255,
     },
+    date: {
+      type: String,
+    },
   },
   { timestamps: true }
 );
