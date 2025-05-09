@@ -1,7 +1,7 @@
-function paginatedResults(model, sortOptions = null) {
+function paginatedResults(model) {
   return async (req, res, next) => {
-    const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.query.limit) || 10;
+    const page = parseInt(req.query.page);
+    const limit = parseInt(req.query.limit);
 
     const startIndex = (page - 1) * limit;
     const endIndex = page * limit;
@@ -22,15 +22,8 @@ function paginatedResults(model, sortOptions = null) {
       };
     }
     try {
-      let query = model.find();
-
-      // Apply sort if provided
-      if (sortOptions) {
-        query = query.sort(sortOptions);
-      }
-
-      results.results = await query.limit(limit).skip(startIndex).exec();
-      if (!results.results || results.results.length === 0) {
+      results.results = await model.find().limit(limit).skip(startIndex).exec();
+      if (!results.results) {
         return res.status(404).json("No Data Found");
       }
       res.paginatedResults = results;
