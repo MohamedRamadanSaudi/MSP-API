@@ -20,9 +20,9 @@ function paginatedResults(model) {
         page: page - 1,
         limit: limit,
       };
-    }
-    try {
-      results.results = await model.find().limit(limit).skip(startIndex).exec();
+    } try {
+      // Convert phone strings to numbers for proper numeric sorting
+      results.results = await model.find().collation({ locale: 'en_US', numericOrdering: true }).sort({ phone: 1 }).limit(limit).skip(startIndex).exec();
       if (!results.results) {
         return res.status(404).json("No Data Found");
       }
